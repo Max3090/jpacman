@@ -15,6 +15,11 @@ import nl.tudelft.jpacman.sprite.Sprite;
 public class Player extends Unit {
 
     /**
+     * The amount of lives at the start of the game
+     */
+    private final int NbLives = 3;
+
+    /**
      * The amount of points accumulated by this player.
      */
     private int score;
@@ -40,6 +45,11 @@ public class Player extends Unit {
     private Unit killer;
 
     /**
+     * Amount of lives left to the player
+     */
+    private int NbLivesLeft;
+
+    /**
      * Creates a new player with a score of 0 points.
      *
      * @param spriteMap
@@ -52,6 +62,7 @@ public class Player extends Unit {
         this.alive = true;
         this.sprites = spriteMap;
         this.deathSprite = deathAnimation;
+        this.NbLivesLeft = NbLives;
         deathSprite.setAnimating(false);
     }
 
@@ -61,7 +72,7 @@ public class Player extends Unit {
      * @return <code>true</code> iff the player is alive.
      */
     public boolean isAlive() {
-        return alive;
+        return this.NbLives > 0;
     }
 
     /**
