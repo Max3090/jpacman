@@ -17,7 +17,7 @@ public class Player extends Unit {
     /**
      * The amount of lives at the start of the game
      */
-    private final int NbLivesTotal = 3;
+    private static final int nbLivesTotal = 3;
 
     /**
      * The amount of points accumulated by this player.
@@ -35,11 +35,6 @@ public class Player extends Unit {
     private final AnimatedSprite deathSprite;
 
     /**
-     * <code>true</code> iff this player is alive.
-     */
-    private boolean alive;
-
-    /**
      * {@link Unit} iff this player died by collision, <code>null</code> otherwise.
      */
     private Unit killer;
@@ -47,7 +42,7 @@ public class Player extends Unit {
     /**
      * Amount of lives left to the player
      */
-    private int NbLivesLeft;
+    private int nbLivesLeft;
 
     /**
      * Creates a new player with a score of 0 points.
@@ -59,10 +54,9 @@ public class Player extends Unit {
      */
     protected Player(Map<Direction, Sprite> spriteMap, AnimatedSprite deathAnimation) {
         this.score = 0;
-        this.alive = true;
         this.sprites = spriteMap;
         this.deathSprite = deathAnimation;
-        this.NbLivesLeft = NbLivesTotal;
+        this.nbLivesLeft = nbLivesTotal;
         deathSprite.setAnimating(false);
     }
 
@@ -72,7 +66,7 @@ public class Player extends Unit {
      * @return <code>true</code> if the player is alive.
      */
     public boolean isAlive() {
-        return this.NbLivesLeft > 0;
+        return this.nbLivesLeft > 0;
     }
 
     /**
@@ -91,7 +85,6 @@ public class Player extends Unit {
         if (!isAlive) {
             deathSprite.restart();
         }
-        this.alive = isAlive;
     }
 
     /**
@@ -144,7 +137,7 @@ public class Player extends Unit {
      * Remove one live from the player
      */
     public void removeLive() {
-        this.NbLivesLeft -= 1;
+        this.nbLivesLeft -= 1;
     }
 
     /**
@@ -153,6 +146,6 @@ public class Player extends Unit {
      * @return NbLivesLeft The amount of lives left
      */
     public int getNbLivesLeft() {
-        return this.NbLivesLeft;
+        return this.nbLivesLeft;
     }
 }
