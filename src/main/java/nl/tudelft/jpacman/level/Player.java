@@ -17,7 +17,7 @@ public class Player extends Unit {
     /**
      * The amount of lives at the start of the game
      */
-    private final int NbLives = 3;
+    private final int NbLivesTotal = 3;
 
     /**
      * The amount of points accumulated by this player.
@@ -62,17 +62,17 @@ public class Player extends Unit {
         this.alive = true;
         this.sprites = spriteMap;
         this.deathSprite = deathAnimation;
-        this.NbLivesLeft = NbLives;
+        this.NbLivesLeft = NbLivesTotal;
         deathSprite.setAnimating(false);
     }
 
     /**
      * Returns whether this player is alive or not.
      *
-     * @return <code>true</code> iff the player is alive.
+     * @return <code>true</code> if the player is alive.
      */
     public boolean isAlive() {
-        return this.NbLives > 0;
+        return this.NbLivesLeft > 0;
     }
 
     /**
@@ -138,5 +138,21 @@ public class Player extends Unit {
      */
     public void addPoints(int points) {
         score += points;
+    }
+
+    /**
+     * Remove one live from the player
+     */
+    public void removeLive() {
+        this.NbLivesLeft -= 1;
+    }
+
+    /**
+     * Returns the amount of lives left
+     *
+     * @return NbLivesLeft The amount of lives left
+     */
+    public int getNbLivesLeft() {
+        return this.NbLivesLeft;
     }
 }
