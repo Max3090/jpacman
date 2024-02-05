@@ -17,7 +17,7 @@ public class Player extends Unit {
     /**
      * The amount of lives at the start of the game
      */
-    private static final int nbLivesTotal = 3;
+    private static final int NB_LIVES_TOTAL = 3;
 
     /**
      * The amount of points accumulated by this player.
@@ -56,7 +56,7 @@ public class Player extends Unit {
         this.score = 0;
         this.sprites = spriteMap;
         this.deathSprite = deathAnimation;
-        this.nbLivesLeft = nbLivesTotal;
+        this.nbLivesLeft = NB_LIVES_TOTAL;
         deathSprite.setAnimating(false);
     }
 

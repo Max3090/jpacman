@@ -48,18 +48,19 @@ public class ScorePanel extends JPanel {
      */
     public ScorePanel(List<Player> players) {
         super();
-        assert players != null;
-
-        setLayout(new GridLayout(2, players.size()));
-
-        for (int i = 1; i <= players.size(); i++) {
-            add(new JLabel("Player " + i, JLabel.CENTER));
-        }
         scoreLabels = new LinkedHashMap<>();
-        for (Player player : players) {
-            JLabel scoreLabel = new JLabel("0", JLabel.CENTER);
-            scoreLabels.put(player, scoreLabel);
-            add(scoreLabel);
+
+        if (players != null) {
+            setLayout(new GridLayout(2, players.size()));
+
+            for (int i = 1; i <= players.size(); i++) {
+                add(new JLabel("Player " + i, javax.swing.SwingConstants.CENTER));
+            }
+            for (Player player : players) {
+                JLabel scoreLabel = new JLabel("0", javax.swing.SwingConstants.CENTER);
+                scoreLabels.put(player, scoreLabel);
+                add(scoreLabel);
+            }
         }
     }
 
@@ -96,7 +97,8 @@ public class ScorePanel extends JPanel {
      * @param scoreFormatter Score formatter to be used.
      */
     public void setScoreFormatter(ScoreFormatter scoreFormatter) {
-        assert scoreFormatter != null;
-        this.scoreFormatter = scoreFormatter;
+        if (scoreFormatter != null) {
+            this.scoreFormatter = scoreFormatter;
+        }
     }
 }
